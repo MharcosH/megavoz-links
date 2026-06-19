@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megavoz Propaganda — Links</title>
+  <meta name="description" content="Megavoz Propaganda — Carro de som, vinhetas e design digital em Goiânia e região. Fale com a gente pelo WhatsApp.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:        #7BC142;
+      --green-dark:   #4A9B2E;
+      --green-glow:   rgba(123,193,66,0.35);
+      --green-subtle: rgba(123,193,66,0.08);
+      --green-border: rgba(123,193,66,0.18);
+      --bg:           #0A0C0E;
+      --bg-card:      rgba(255,255,255,0.04);
+      --bg-card-hover:rgba(255,255,255,0.07);
+      --border:       rgba(255,255,255,0.06);
+      --border-hover: rgba(123,193,66,0.30);
+      --text:         #F2F2EF;
+      --text-muted:   rgba(242,242,239,0.50);
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --radius:       16px;
+      --radius-sm:    12px;
+      --radius-pill:  50px;
+      --ease:         cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px 80px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ─── ANIMATED BACKGROUND ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(123,193,66,0.15) 0%, rgba(123,193,66,0.05) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: bgFloat 8s ease-in-out infinite;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -20%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(74,155,46,0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      animation: bgFloat 12s ease-in-out infinite reverse;
+    }
+
+    @keyframes bgFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(30px); }
+    }
+
+    /* ─── NOISE TEXTURE ─── */
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+
+    /* ─── WRAPPER ─── */
+    .wrapper {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 56px 0 40px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      margin-bottom: 20px;
+      position: relative;
+      animation: avatarEntry 0.6s var(--ease) both;
+    }
+
+    .avatar::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1.5px solid var(--green-border);
+      animation: ringPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes ringPulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.04); }
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--bg);
+      display: block;
+    }
+
+    .hero-name {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+
+    .hero-name .accent { color: var(--green); }
+
+    .hero-tagline {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .hero-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.06em;
+    }
+
+    .hero-location svg {
+      opacity: 0.7;
+    }
+
+    /* ─── MAIN CTA (WhatsApp) ─── */
+    .cta-main {
+      width: 100%;
+      margin-bottom: 32px;
+    }
+
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(123,193,66,0.20),
+        0 4px 20px rgba(123,193,66,0.30),
+        0 1px 3px rgba(0,0,0,0.3);
+      transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    }
+
+    .btn-whatsapp::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(123,193,66,0.35),
+        0 8px 32px rgba(123,193,66,0.40),
+        0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .btn-whatsapp:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .btn-whatsapp svg { flex-shrink: 0; }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .divider span {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* ─── SERVICE CARDS (Glass) ─── */
+    .services {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text);
+      cursor: pointer;
+      position: relative;
+      transition:
+        background 0.2s var(--ease),
+        border-color 0.25s var(--ease),
+        box-shadow 0.25s var(--ease),
+        transform 0.2s var(--ease);
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      box-shadow: 0 0 24px rgba(123,193,66,0.08), 0 8px 24px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+    }
+
+    .card:active {
+      transform: translateY(0) scale(0.99);
+    }
+
+    .card-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--green-subtle);
+      border: 1px solid var(--green-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--green);
+      transition: background 0.2s var(--ease);
+    }
+
+    .card:hover .card-icon-wrap {
+      background: rgba(123,193,66,0.14);
+    }
+
+    .card-body { flex: 1; min-width: 0; }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 2px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .card-chevron {
+      color: var(--green);
+      opacity: 0;
+      flex-shrink: 0;
+      transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+    }
+
+    .card:hover .card-chevron {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+
+    /* ─── SOCIAL GRID ─── */
+    .social-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .social-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 18px 8px;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text);
+      cursor: pointer;
+      transition:
+        background 0.2s var(--ease),
+        border-color 0.25s var(--ease),
+        color 0.2s var(--ease),
+        transform 0.2s var(--ease);
+    }
+
+    .social-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .social-btn:active { transform: translateY(0); }
+
+    .social-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .social-btn svg {
+      transition: transform 0.25s var(--ease);
+    }
+
+    .social-btn:hover svg {
+      transform: scale(1.1);
+    }
+
+    /* ─── INFO STRIP ─── */
+    .info-strip {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      margin-top: 5px;
+      box-shadow: 0 0 6px var(--green);
+      animation: statusPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% { box-shadow: 0 0 4px var(--green); opacity: 0.8; }
+      50% { box-shadow: 0 0 12px rgba(123,193,66,0.6); opacity: 1; }
+    }
+
+    .info-text {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .info-text strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .footer a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .footer a:hover { opacity: 0.8; }
+
+    /* ─── ENTRANCE ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s var(--ease) forwards;
+    }
+
+    .hero            { animation-delay: 0.0s; }
+    .cta-main        { animation-delay: 0.08s; }
+    .divider         { animation-delay: 0.14s; }
+    .services        { animation-delay: 0.18s; }
+    .social-grid     { animation-delay: 0.26s; }
+    .info-strip      { animation-delay: 0.32s; }
+    .footer          { animation-delay: 0.38s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes avatarEntry {
+      from { opacity: 0; transform: scale(0.8); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* ─── REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .fade-up {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 380px) {
+      .hero-name { font-size: 24px; }
+      .social-grid { gap: 8px; }
+      .social-btn { padding: 14px 6px; }
+    }
+
+    /* ─── FOCUS STATES ─── */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+  </style>
+</head>
+<body>
+
+<div class="noise" aria-hidden="true"></div>
+
+<div class="wrapper">
+
+  <!-- ── HERO ── -->
+  <header class="hero fade-up">
+    <div class="avatar">
+      <img src="logo.png" alt="Megavoz Propaganda — logo" width="82" height="82">
+    </div>
+    <h1 class="hero-name">Mega<span class="accent">voz</span> Propaganda</h1>
+    <p class="hero-tagline">Carro de som · Vinhetas · Design Digital</p>
+
+  </header>
+
+  <!-- ── BOTÃO PRINCIPAL WHATSAPP ── -->
+  <div class="cta-main fade-up" id="main-cta">
+    <a
+      id="btn-whatsapp-geral"
+      href="https://wa.me/5562981623344?text=Ol%C3%A1!%20Vim%20pelo%20link%20do%20Megavoz.%20Pode%20me%20ajudar%3F"
+      target="_blank"
+      rel="noopener"
+      class="btn-whatsapp"
+      aria-label="Fale com a Megavoz pelo WhatsApp"
+    >
+      <!-- WhatsApp SVG icon -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Fale com a Megavoz
+    </a>
+  </div>
+
+  <!-- ── DIVIDER ── -->
+  <div class="divider fade-up" aria-hidden="true">
+    <span>Nossos serviços</span>
+  </div>
+
+  <!-- ── SERVICE CARDS ── -->
+  <nav class="services fade-up" id="products" aria-label="Serviços da Megavoz">
+
+    <a
+      id="btn-carro-som"
+      href="https://wa.me/5562981623344?text=Ol%C3%A1!%20Quero%20anunciar%20com%20carro%20de%20som.%20Pode%20me%20passar%20uma%20proposta%3F"
+      target="_blank"
+      rel="noopener"
+      class="card"
+    >
+      <div class="card-icon-wrap" aria-hidden="true">
+        <!-- Volume/Speaker SVG -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Carro de Som</div>
+        <div class="card-desc">Propaganda volante na sua cidade — resultado no mesmo dia</div>
+      </div>
+      <div class="card-chevron" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </a>
+
+    <a
+      id="btn-vinheta"
+      href="https://wa.me/5562981623344?text=Ol%C3%A1!%20Quero%20gravar%20uma%20vinheta%20ou%20spot%20comercial.%20Como%20funciona%3F"
+      target="_blank"
+      rel="noopener"
+      class="card"
+    >
+      <div class="card-icon-wrap" aria-hidden="true">
+        <!-- Microphone SVG -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Vinheta / Spot Comercial</div>
+        <div class="card-desc">Gravação profissional — locução, trilha e edição</div>
+      </div>
+      <div class="card-chevron" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </a>
+
+    <a
+      id="btn-design"
+      href="https://wa.me/5562981623344?text=Ol%C3%A1!%20Preciso%20de%20design%20digital%20para%20meu%20neg%C3%B3cio.%20Pode%20me%20ajudar%3F"
+      target="_blank"
+      rel="noopener"
+      class="card"
+    >
+      <div class="card-icon-wrap" aria-hidden="true">
+        <!-- Pen/Design SVG -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Design Digital</div>
+        <div class="card-desc">Posts, artes e materiais visuais pro seu negócio</div>
+      </div>
+      <div class="card-chevron" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </a>
+
+  </nav>
+
+  <!-- ── SOCIAL GRID ── -->
+  <div class="social-grid fade-up" id="secondary-links">
+
+    <a
+      id="btn-instagram"
+      href="https://instagram.com/megavoz"
+      target="_blank"
+      rel="noopener"
+      class="social-btn"
+      aria-label="Instagram da Megavoz"
+    >
+      <!-- Instagram SVG -->
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      <span class="social-label">Instagram</span>
+    </a>
+
+    <a
+      id="btn-site"
+      href="https://megavoz.com.br"
+      target="_blank"
+      rel="noopener"
+      class="social-btn"
+      aria-label="Site da Megavoz"
+    >
+      <!-- Globe SVG -->
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span class="social-label">Site</span>
+    </a>
+
+    <a
+      id="btn-google"
+      href="https://www.google.com/maps/place/Megavoz+Propaganda/@-16.6448128,-49.3198015,17z/data=!3m1!4b1!4m6!3m5!1s0x935e61db139a04d7:0x6a9b0066874d3061!8m2!3d-16.6448128!4d-49.3198015!16s%2Fg%2F11fnx6qjgk"
+      target="_blank"
+      rel="noopener"
+      class="social-btn"
+      aria-label="Avaliações no Google Maps"
+    >
+      <!-- Map Pin SVG -->
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      <span class="social-label">Avaliações</span>
+    </a>
+
+  </div>
+
+  <!-- ── INFO STRIP ── -->
+  <div class="info-strip fade-up" id="hours-card">
+    <div class="status-indicator" aria-hidden="true"></div>
+    <div class="info-text">
+      <strong>Seg – Sáb: 8h às 18h</strong> &nbsp;·&nbsp; Domingo: Fechado<br>
+      R. Castro Alves, Qd 133-A Lt 02 · Jd. Nova Esperança · Goiânia, GO · (62) 98162-3344
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer fade-up" id="footer">
+    <a href="https://megavoz.com.br">megavoz.com.br</a><br>
+    Megavoz Propaganda © 2026 · Goiânia, GO
+  </footer>
+
+</div>
+
+</body>
+</html>
